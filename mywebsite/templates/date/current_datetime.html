@@ -1,0 +1,7 @@
+{% extends "date/base_datetime.html" %}
+
+{% block title %}The current time{% endblock %}
+
+{% block content %}
+It is now {{ current_date|date:"h:i:s a  F j, Y" }}.</p>
+{% endblock %}
