@@ -1,6 +1,8 @@
 from django.conf.urls import patterns, include, url
 from mywebsite.views import *
 
+from reader.views import homepage
+
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -17,7 +19,10 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     # Urls created by me
-    url(r'^$', home),
     url(r'time/$', current_date),
     url(r'time/plus/(\d{1,2})/$', hours_ahead),
+    url(r'^polls/', include('polls.urls', namespace="polls")),
+    # url(r'^polls/$', index),
+    # Urls for reader app
+    url(r'^$', homepage),
 )
