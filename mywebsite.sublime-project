@@ -1,0 +1,21 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "mywebsite"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "books"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "polls"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "reader"
+		}
+	]
+}
