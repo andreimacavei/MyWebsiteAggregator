@@ -39,8 +39,18 @@ def homepage(request):
         'subscriptions': dummySubscriptions
     })
 
+
+# $.ajax({
+#         url: 'get-feeds?site={}',
+#         success: function(data) {
+#             $('.feeds').html(data);
+#         }
+#     });
+
 def get_feeds(request):
     # Check if user is authenticated first
+    feeds = get_feeds()
+    return render(request, 'feeds.html', {'feeds', feeds};
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/accounts/login/?next=%s' % request.path)
 
