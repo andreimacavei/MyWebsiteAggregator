@@ -2,10 +2,10 @@ from django.db import models
 
 # Create your models here.
 
-class FeedUrl(models.Model):
+class Subscription(models.Model):
     name = models.CharField(max_length = 100, blank = True)
     url = models.URLField(max_length = 200, unique = True)
-    lastVisited = models.DateTimeField(auto_now = True)
+    lastUpdated = models.DateTimeField(auto_now = True)
 
     users = models.ManyToManyField('self')
 
@@ -15,13 +15,13 @@ class FeedUrl(models.Model):
         else:
             return self.name
 
-class UserData(models.Model):
+class User(models.Model):
     username = models.CharField(max_length = 50, blank = False)
     password = models.CharField(max_length = 30, blank = False)
-    feeds = models.ManyToManyField(FeedUrl)
+    subscriptions = models.ManyToManyField(Subscription)
 
-    def feedslist(self):
-        return list(self.feeds.all())
+    def subscriptionlist(self):
+        return list(self.subscriptions.all)
 
     def __unicode__(self):
         return self.username

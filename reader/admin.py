@@ -1,4 +1,4 @@
 from django.contrib import admin
-from reader.models import FeedUrl
+from reader.models import Subscription
 
-admin.site.register(FeedUrl)
+admin.site.register(Subscription)

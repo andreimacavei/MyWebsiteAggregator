@@ -1,5 +1,8 @@
 # Create your views here.
-from django.http import HttpResponse
+from django import forms
+from django.contrib import auth
+from django.contrib.auth.forms import UserCreationForm
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 
 dummyFeeds = [
@@ -19,3 +22,38 @@ dummyFeeds = [
 
 def homepage(request):
     return render(request, 'index.html', {'feeds': dummyFeeds})
+
+def get_feeds(request):
+    # Check if user is authenticated first
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/accounts/login/?next=%s' % request.path)
+
+def login_view(request):
+    username = request.POST.get('username', '')
+    password = request.POST.get('password', '')
+    user = auth.authenticate(username=username, password=password)
+    if user is not None and user.is_active:
+        # Correct password, and the user is marked "active"
+        auth.login(request, user)
+        # Redirect to a success page.
+        return HttpResponseRedirect("/account/loggedin/")
+    else:
+        # Show an error page
+        return HttpResponseRedirect("/account/invalid/")
+
+def logout_view(request):
+    auth.logout(request)
+    # Redirect to a success page.
+    return HttpResponseRedirect("/account/loggedout/")
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            new_user = form.save()
+            return HttpResponseRedirect("/accounts/login/")
+    else:
+        form = UserCreationForm()
+    return render(request, "registration/register.html", {
+        'form': form,
+    })
