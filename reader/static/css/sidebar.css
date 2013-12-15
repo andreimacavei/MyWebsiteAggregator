@@ -1,0 +1,43 @@
+.feeds-sidebar {
+    position: fixed;
+    width: 260px;
+    height: 100%;
+    padding: 10px;
+    border-right: 2px solid #22336E;
+}
+
+.feeds-sidebar .add-feed {
+    margin-bottom: 10px;
+}
+
+.feeds-sidebar .add-feed .feed-url {
+    padding: 5px;
+}
+
+.feeds-sidebar > .subscriptions > * {
+    /*text-align: center;*/
+    font-family: Helvetica, sans;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.feeds-sidebar > .subscriptions > *:hover {
+    cursor: pointer;
+}
+
+.show-all {
+    font-size: 1.6em;
+    background-color: #BDC5CA;
+}
+
+.show-all:hover {
+    background-color: #9EA4A7;
+}
+
+.show-for-page {
+    background-color: #C2E2F8;
+}
+
+.show-for-page:hover {
+    background-color: #86C5F0;
+}

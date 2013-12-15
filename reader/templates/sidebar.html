@@ -1,0 +1,12 @@
+<div class="feeds-sidebar">
+    <div class="add-feed">
+        <input type="text" class="feed-url" placeholder="insert url" />
+        <button class="add-url">Add</button>
+    </div>
+    <div class="subscriptions">
+        <div class="show-all">All Items</div>
+        {% for sub in subscriptions %}
+            <div class="show-for-page" data-url="{{ sub.url }}">{{ sub.name }}</div>
+        {% endfor %}
+    </div>
+</div>
