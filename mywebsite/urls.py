@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 from mywebsite.views import *
 
 from reader.views import homepage, login_view, logout_view
+from django.views.decorators.csrf import csrf_exempt
 
 from django.contrib.auth.views import login, logout
 # Uncomment the next two lines to enable the admin:
@@ -27,8 +28,8 @@ urlpatterns = patterns('',
 
     # Urls for reader app
     url(r'^$', homepage),
-    url(r'^accounts/login/$',  login_view),
-    url(r'^accounts/logout/$', logout_view),
+    url(r'^login/$', login_view),
+    url(r'^logout/$', logout_view),
     url(r'^account/loggedin/', include('reader.urls', namespace="reader")),
     url(r'^account/loggedout/', include('reader.urls', namespace="reader")),
 )

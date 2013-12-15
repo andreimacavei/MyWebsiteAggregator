@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "registration/base.html" %}
 
 {% block title %}Welcome, please login{% endblock %}
 
@@ -7,7 +7,7 @@
   {% if form.errors %}
     <p class="error">Sorry, that's not a valid username or password</p>
   {% endif %}
-
+  {% csrf_token %}
   <form action="" method="post">
     <label for="username">User name:</label>
     <input type="text" name="username" value="" id="username">

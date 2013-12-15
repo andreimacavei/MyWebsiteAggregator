@@ -5,6 +5,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 
+from django.views.decorators.csrf import csrf_exempt
+
 dummyFeeds = [
     {
         'title': 'First Article',
@@ -28,6 +30,7 @@ def get_feeds(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/accounts/login/?next=%s' % request.path)
 
+@csrf_exempt
 def login_view(request):
     username = request.POST.get('username', '')
     password = request.POST.get('password', '')
@@ -46,6 +49,7 @@ def logout_view(request):
     # Redirect to a success page.
     return HttpResponseRedirect("/account/loggedout/")
 
+@csrf_exempt
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
