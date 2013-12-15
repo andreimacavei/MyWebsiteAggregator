@@ -1,3 +1,20 @@
 .feeds {
+    position: absolute;
     margin-left: 300px;
+}
+
+.feeds > .feed {
+    width: 400px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid gray;
+}
+
+.feeds .pubdate {
+    font-style: italic;
+    font-size: 0.7em;
+}
+
+.feeds .title, .feeds .description {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }

@@ -22,8 +22,22 @@ dummyFeeds = [
     }
 ]
 
+dummySubscriptions = [
+    {
+        'name': '1st website',
+        'url': '#'
+    },
+    {
+        'name': '2nd website',
+        'url': '#'
+    }
+]
+
 def homepage(request):
-    return render(request, 'index.html', {'feeds': dummyFeeds})
+    return render(request, 'index.html', {
+        'feeds': dummyFeeds,
+        'subscriptions': dummySubscriptions
+    })
 
 def get_feeds(request):
     # Check if user is authenticated first
