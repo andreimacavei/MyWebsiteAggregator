@@ -1,0 +1,10 @@
+<div class='feeds'>
+    <h1>There goes my reader</h1>
+{% for feed in feeds %}
+    <div class='feed'>
+        <h3 class='title'><a href="{{ feed.link }}">{{ feed.title }}</a></h3>
+        <h4 class='description'>{{ feed.description }}</h4>
+        <p class='pubdate'>{{ feed.pubdate }}</p>
+    </div>
+{% endfor %}
+</div>
